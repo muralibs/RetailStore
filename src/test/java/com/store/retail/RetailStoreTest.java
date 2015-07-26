@@ -12,7 +12,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- * A test for retail store
+ * A test for retail store.
  *
  * @author bsmurali
  */
@@ -26,16 +26,16 @@ public class RetailStoreTest {
      */
     @Test
     public void netPayableBillAmtByEmployee() {
-        //Create customer
+        //Create and register an emplooyee
         Customer employee = CustomerFactory.registerCustomer("EmployeeCustomer", LocalDateTime.now(), CustomerType.EMPLOYEE);
         //Create order
         Order order = new Order(employee); //Order belongs to this employee
-        final Item genericItemABC = ItemFactory.createItem("ABC", 12.0, 2, ItemCategory.OTHERS);
-        final Item genericItemXYZ = ItemFactory.createItem("XYZ", 120.0, 1, ItemCategory.OTHERS);
-        final Item groceries = ItemFactory.createItem("GRAIN", 990.0, 1, ItemCategory.GROCERIES);
+        final Item genericItemHandWash = ItemFactory.createItem("HandWash", 12.0, 2, ItemCategory.OTHERS);
+        final Item genericItemMobile = ItemFactory.createItem("Mobile", 120.0, 1, ItemCategory.OTHERS);
+        final Item groceries = ItemFactory.createItem("Rice", 990.0, 1, ItemCategory.GROCERIES);
         //add items to order (basket)
-        order.addItem(genericItemABC);
-        order.addItem(genericItemXYZ);
+        order.addItem(genericItemHandWash);
+        order.addItem(genericItemMobile);
         order.addItem(groceries);
         //Create the bill
         double finalAmt = order.generateBill();//applies the discount as well
@@ -57,16 +57,16 @@ public class RetailStoreTest {
      */
     @Test
     public void netPayableBillAmtByAffiliate() {
-        Customer affiliable = CustomerFactory.registerCustomer("AffiliableCustomer", LocalDateTime.now(), CustomerType.AFFILIATE);
-        System.out.println(affiliable);
+        Customer affiliate = CustomerFactory.registerCustomer("AffiliateCustomer", LocalDateTime.now(), CustomerType.AFFILIATE);
+        System.out.println(affiliate);
 
-        Order order = new Order(affiliable); //Order belongs to this employee
-        final Item genericItemABC = ItemFactory.createItem("ABC", 12.0, 2, ItemCategory.OTHERS);
-        final Item genericItemXYZ = ItemFactory.createItem("XYZ", 120.0, 1, ItemCategory.OTHERS);
-        final Item groceries = ItemFactory.createItem("GRAIN", 990.0, 1, ItemCategory.GROCERIES);
+        Order order = new Order(affiliate); //Order belongs to this employee
+        final Item genericItemHandWash = ItemFactory.createItem("HandWash", 12.0, 2, ItemCategory.OTHERS);
+        final Item genericItemMobile = ItemFactory.createItem("Mobile", 120.0, 1, ItemCategory.OTHERS);
+        final Item groceries = ItemFactory.createItem("Rice", 990.0, 1, ItemCategory.GROCERIES);
         //add items to order (basket)
-        order.addItem(genericItemABC);
-        order.addItem(genericItemXYZ);
+        order.addItem(genericItemHandWash);
+        order.addItem(genericItemMobile);
         order.addItem(groceries);
         
         //Create the bill
@@ -93,12 +93,12 @@ public class RetailStoreTest {
         System.out.println(_2YrOldCustomer);
 
         Order order = new Order(_2YrOldCustomer); //Order belongs to this employee
-        final Item genericItemABC = ItemFactory.createItem("ABC", 12.0, 2, ItemCategory.OTHERS);
-        final Item genericItemXYZ = ItemFactory.createItem("XYZ", 120.0, 1, ItemCategory.OTHERS);
-        final Item groceries = ItemFactory.createItem("GRAIN", 990.0, 1, ItemCategory.GROCERIES);
+        final Item genericItemHandWash = ItemFactory.createItem("HandWash", 12.0, 2, ItemCategory.OTHERS);
+        final Item genericItemMobile = ItemFactory.createItem("Mobile", 120.0, 1, ItemCategory.OTHERS);
+        final Item groceries = ItemFactory.createItem("Rice", 990.0, 1, ItemCategory.GROCERIES);
         //add items to order (basket)
-        order.addItem(genericItemABC);
-        order.addItem(genericItemXYZ);
+        order.addItem(genericItemHandWash);
+        order.addItem(genericItemMobile);
         order.addItem(groceries);
         
         //Create the bill
@@ -124,12 +124,12 @@ public class RetailStoreTest {
         Customer newCustomer = CustomerFactory.registerCustomer("NewCustomer", LocalDateTime.now() , CustomerType.OTHER);
 
         Order order = new Order(newCustomer); //Order belongs to this employee
-        final Item genericItemABC = ItemFactory.createItem("ABC", 12.0, 2, ItemCategory.OTHERS);
-        final Item genericItemXYZ = ItemFactory.createItem("XYZ", 120.0, 1, ItemCategory.OTHERS);
-        final Item groceries = ItemFactory.createItem("GRAIN", 990.0, 1, ItemCategory.GROCERIES);
+        final Item genericItemHandWash = ItemFactory.createItem("HandWash", 12.0, 2, ItemCategory.OTHERS);
+        final Item genericItemMobile = ItemFactory.createItem("Mobile", 120.0, 1, ItemCategory.OTHERS);
+        final Item groceries = ItemFactory.createItem("Rice", 990.0, 1, ItemCategory.GROCERIES);
         //add items to order (basket)
-        order.addItem(genericItemABC);
-        order.addItem(genericItemXYZ);
+        order.addItem(genericItemHandWash);
+        order.addItem(genericItemMobile);
         order.addItem(groceries);
         //Create the bill
         double finalAmt = order.generateBill();//applies the discount as well
@@ -153,7 +153,7 @@ public class RetailStoreTest {
         Customer groceriesCustomer = CustomerFactory.registerCustomer("GroceriesCustomer", LocalDateTime.now() , CustomerType.OTHER);
 
         Order order = new Order(groceriesCustomer); //Order belongs to this employee
-        final Item groceries = ItemFactory.createItem("GRAIN", 990.0, 1, ItemCategory.GROCERIES);
+        final Item groceries = ItemFactory.createItem("Rice", 990.0, 1, ItemCategory.GROCERIES);
         //add items to order (basket)
         order.addItem(groceries);
         //Create the bill
@@ -171,7 +171,7 @@ public class RetailStoreTest {
         Customer groceriesEmp = CustomerFactory.registerCustomer("GroceriesEmp", LocalDateTime.now() , CustomerType.EMPLOYEE);
 
         Order orderEmp = new Order(groceriesEmp); //Order belongs to this employee
-        final Item groceriesItemEmp = ItemFactory.createItem("GRAIN", 990.0, 1, ItemCategory.GROCERIES);
+        final Item groceriesItemEmp = ItemFactory.createItem("Rice", 990.0, 1, ItemCategory.GROCERIES);
         //add items to order (basket)
         orderEmp.addItem(groceries);
         //Create the bill

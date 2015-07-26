@@ -16,11 +16,6 @@ public class Customer {
     private Discount discount;
     private Order order;
     private CustomerType type;
-
-//    public Customer() {
-//        this.registeredDateTime = LocalDateTime.now();
-//    }
-
     
     public Customer(String name, LocalDateTime registeredDateTime, CustomerType type) {
         if(null == name || name.isEmpty()) {
