@@ -42,14 +42,16 @@ public class RetailStoreTest {
         //Create the bill
         double finalAmt = order.generateBill();//applies the discount as well
         System.out.println("final Amt =" + finalAmt);
-        //test helper
-        ExpectedEmployeeNetPayable eenp = new ExpectedEmployeeNetPayable();
-        eenp.addItem(genericItemABC);
-        eenp.addItem(genericItemXYZ);
-        eenp.addItem(groceries);
-        double expected = eenp.getExpectedPayableAmt();
 
-        assertEquals(expected, finalAmt, 0.0);
+        /*
+         * -------Excepted result calculation----- 
+         * 30 % of 12.0 * 2 units = 16.8
+         * 30 % of 120.0 = 84.0
+         * $5 per $100 for 16.8 + 84.0 + 990.0 = 50.0
+         * total = 16.8 + 84.0 + 990.0 - 50 = 1040.8
+         */
+        
+        assertEquals(1040.8, finalAmt, 0.0);
     }
 
     @Test
@@ -74,10 +76,10 @@ public class RetailStoreTest {
          * -------Excepted result calculation----- 
          * 10 % of 12.0 * 2 units = 21.6
          * 10 % of 120.0 = 108.0
-         * $5 per $100 for groceries of 990.0 = 945.0
-         * total = 21.6 + 108.0 + 945.0 = 1074.6
+         * $5 per $100 for 21.6 + 108.0 + 990.0 = 55.0
+         * total = 21.6 + 108.0 + 990.0 - 55 = 1064.6
          */
-        assertEquals(1074.6, finalAmt, 0.0);
+        assertEquals(1064.6, finalAmt, 0.0);
     }
 
     @Test
@@ -101,10 +103,10 @@ public class RetailStoreTest {
         /*
          * 5 % of 12.0 * 2 units = 22.8
          * 5 % of 120.0 = 114.0
-         * $5 per $100 for groceries of 990.0 = 945.0
-         * total = 22.8 + 114.0 + 945.0 = 1081.8
+         * $5 per $100 of 22.8 + 114.0 + 990.0 = 55.0
+         * total = 22.8 + 114.0 + 990.0 - 55.0 = 1071.8
          */
-        assertEquals(1081.8, finalAmt, 0.0);
+        assertEquals(1071.8, finalAmt, 0.0);
     }
 
     /**
@@ -169,35 +171,6 @@ public class RetailStoreTest {
         System.out.println("final Amt =" + finalAmtEmp);
         assertEquals(945.0, finalAmtEmp, 0.0);
         System.out.println("----------------netPayableBillAmtForOnlyGroceries -END ---------------------");
-    }
-
-    public class ExpectedEmployeeNetPayable {
-
-        private final List<Item> items = new ArrayList();
-
-        public void addItem(Item item) {
-            this.items.add(item);
-        }
-
-        public double getExpectedPayableAmt() {
-
-            double expectedAmt = 0.0;
-
-            //TODO: Java 8 foreach()...
-            //Add all the price * quantity to expectedAmt
-            for (Item item : this.items) {
-                if (ItemCategory.GROCERIES.equals(item.getCategory())) {
-                    expectedAmt += (item.getPrice() - (((int) item.getPrice() / 100) * 5)) * item.getQuantity();
-                    System.out.println(" Groceries = " + expectedAmt);
-                } else {
-                    //30% for employees if item is not groceries
-                    expectedAmt += (item.getPrice() - (30.0 / 100 * item.getPrice())) * item.getQuantity();
-                    System.out.println(" not groceries = " + expectedAmt);
-                }
-            }
-            System.out.println("Expected = " + expectedAmt);
-            return expectedAmt;
-        }
     }
 
 }

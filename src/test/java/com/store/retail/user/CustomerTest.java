@@ -18,7 +18,7 @@ public class CustomerTest {
     
     public CustomerTest() {
     }
-    
+
     @Test
     public void employee() {
         Customer employee = CustomerFactory.registerCustomer("EmployeeCustomer", LocalDateTime.now() ,CustomerType.EMPLOYEE);

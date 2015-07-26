@@ -1,7 +1,7 @@
 package com.store.retail.item;
 
 /**
- *
+ * An item representing a grocery.
  * @author bsmurali
  */
 class Groceries extends AbstractItem{
