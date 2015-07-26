@@ -8,8 +8,6 @@ import com.store.retail.user.Customer;
 import com.store.retail.user.CustomerFactory;
 import com.store.retail.user.CustomerType;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -24,7 +22,7 @@ public class RetailStoreTest {
     }
 
     /**
-     * Employee's net payable amount
+     * Test for net payable amount by the employee of the store.
      */
     @Test
     public void netPayableBillAmtByEmployee() {
@@ -54,6 +52,9 @@ public class RetailStoreTest {
         assertEquals(1040.8, finalAmt, 0.0);
     }
 
+    /**
+     * Test for net amount payable by the affiliated customer.
+     */
     @Test
     public void netPayableBillAmtByAffiliate() {
         Customer affiliable = CustomerFactory.registerCustomer("AffiliableCustomer", LocalDateTime.now(), CustomerType.AFFILIATE);
@@ -82,6 +83,10 @@ public class RetailStoreTest {
         assertEquals(1064.6, finalAmt, 0.0);
     }
 
+    /**
+     * Test for net amount payable by the customer who is in the
+     * system for more than 2 years.
+     */
     @Test
     public void netPayableBillAmtBy2YearOldCustomer() {
         Customer _2YrOldCustomer = CustomerFactory.registerCustomer("OldCustomer", LocalDateTime.now().minusYears(2), CustomerType.OTHER);
@@ -110,8 +115,8 @@ public class RetailStoreTest {
     }
 
     /**
-     * A customer who is neither an employer nor an affiliate and nor an old
-     * customer.
+     * Test for net payable amount by the customer who is neither an employer 
+     * nor an affiliate and nor an old customer.
      */
     @Test
     public void netPayableBillAmtByNewCustomer() {
@@ -139,6 +144,9 @@ public class RetailStoreTest {
         System.out.println("-------------------------------------");
     }
 
+    /**
+     * Test for net amount payable for only groceries.
+     */
     @Test
     public void netPayableBillAmtForOnlyGroceries() {
         System.out.println("----------------netPayableBillAmtForOnlyGroceries -START---------------------");
