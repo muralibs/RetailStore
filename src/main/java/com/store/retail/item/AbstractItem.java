@@ -3,7 +3,7 @@ package com.store.retail.item;
 import java.util.Objects;
 
 /**
- *
+ * Represents the state of each item. Contains the common properties of any item.
  * @author bsmurali
  */
 public abstract class AbstractItem implements Item{

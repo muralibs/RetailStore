@@ -1,7 +1,7 @@
 package com.store.retail.discount;
 
 /**
- * 
+ * An object that represents the percentage discount provided to a <code>Customer</code>.
  * @author bsmurali
  */
 public final class Discount {
