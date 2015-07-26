@@ -7,7 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * <code>Customer</code> adds the <code>Item</code> to this Order class. 
+ * This holds the customer's items and this becomes the basis for final bill 
+ * generation.
  * @author bsmurali
  */
 public class Order {

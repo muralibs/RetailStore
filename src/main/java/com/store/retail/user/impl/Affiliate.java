@@ -11,12 +11,6 @@ import java.time.LocalDateTime;
  */
 public class Affiliate extends Customer{
 
-    public Affiliate() {
-        super(CustomerType.AFFILIATE);
-        //Set the disount %age
-        this.setDiscount(new Discount(10.0)); //10%
-    }
-
     public Affiliate(String Name, LocalDateTime registeredDateTime, CustomerType type) {
         super(Name, registeredDateTime, type);
         //Set the disount %age

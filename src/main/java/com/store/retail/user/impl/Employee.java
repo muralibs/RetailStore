@@ -11,12 +11,6 @@ import java.time.LocalDateTime;
  */
 public class Employee extends Customer{
 
-    public Employee() {
-        super(CustomerType.EMPLOYEE);
-        //Set the disount %age
-        this.setDiscount(new Discount(30.0)); //30%
-    }
-
     public Employee(String Name, LocalDateTime registeredDateTime, CustomerType type) {
         super(Name, registeredDateTime, type);
         //Set the disount %age
